@@ -8,13 +8,12 @@ import IconButton from 'components/IconButton';
 import VerticalIconButton from 'components/VerticalIconButton';
 import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import Container from 'components/Container';
 
 const HomeScreen = () => {
   const { theme } = useUnistyles();
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const navigateToMatch = () => {
-    navigation.navigate('Match');
+    navigation.navigate('MatchRoute');
   };
   const navigateToMatchHistory = () => {
     navigation.navigate('History');

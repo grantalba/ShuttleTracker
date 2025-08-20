@@ -18,6 +18,7 @@ const RootNavigation = () => {
             backgroundColor: theme.colors.background,
           },
           headerShadowVisible: false,
+          orientation: 'portrait',
         }}
       />
     </Stack.Navigator>

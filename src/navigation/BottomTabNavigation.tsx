@@ -8,6 +8,7 @@ import SettingsScreen from '@pages/Settings/SettingsScreen';
 import { SIZES } from 'constants/theme';
 import Octicons from '@react-native-vector-icons/octicons';
 import { useUnistyles } from 'react-native-unistyles';
+import MatchRoute from './MatchRoute';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,6 +23,7 @@ const BottomTabNavigation = () => {
         const { isFocused } = navigation;
 
         return {
+          title: 'Home',
           tabBarIcon: () => (
             <Octicons
               name="home"
@@ -40,12 +42,13 @@ const BottomTabNavigation = () => {
       },
     },
     {
-      name: 'Match',
-      component: MatchScreen,
+      name: 'MatchRoute',
+      component: MatchRoute,
       options: ({ navigation }: { navigation: { isFocused: any } }) => {
         const { isFocused } = navigation;
 
         return {
+          title: 'Match',
           tabBarIcon: () => (
             <Octicons
               name="plus"
@@ -71,6 +74,7 @@ const BottomTabNavigation = () => {
         const { isFocused } = navigation;
 
         return {
+          title: 'History',
           tabBarIcon: () => (
             <Octicons
               name="history"
@@ -95,6 +99,7 @@ const BottomTabNavigation = () => {
         const { isFocused } = navigation;
 
         return {
+          title: 'Settings',
           tabBarIcon: () => (
             <Octicons
               name="gear"
