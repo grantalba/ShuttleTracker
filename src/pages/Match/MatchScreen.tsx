@@ -8,6 +8,10 @@ import MatchType from './MatchType';
 import GameFormat from './GameFormat';
 import PlayersName from './PlayersName';
 import { useMatchStore } from '@store/matchStore';
+import IconButton from 'components/IconButton';
+import { ParamListBase, useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
 const MatchScreen = () => {
   const { theme } = useUnistyles();
   const matchSettings = useMatchStore((state) => state.matchSettings);
@@ -15,6 +19,10 @@ const MatchScreen = () => {
   const changeGameFormat = useMatchStore((state) => state.changeGameFormat);
   const updatePlayerName = useMatchStore((state) => state.updatePlayerName);
   const { matchType, gameFormat, players } = matchSettings;
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const navigateToInGameMatch = () => {
+    navigation.navigate('InGameMatch');
+  };
 
   return (
     <Container>
@@ -43,6 +51,13 @@ const MatchScreen = () => {
         <GameFormat gameFormat={gameFormat} changeGameFormat={changeGameFormat} />
 
         <PlayersName matchType={matchType} players={players} updatePlayerName={updatePlayerName} />
+
+        <IconButton
+          name={'play'}
+          text={'Start Match'}
+          onPress={navigateToInGameMatch}
+          containerStyle={styles.iconButtonContainer}
+        />
       </ScrollView>
     </Container>
   );
@@ -59,6 +74,9 @@ const styles = StyleSheet.create((theme) => ({
     fontWeight: 'bold',
     marginLeft: SIZES.sm,
     color: theme.colors.text,
+  },
+  iconButtonContainer: {
+    marginBottom: SIZES.header,
   },
 }));
 
