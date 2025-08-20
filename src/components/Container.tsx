@@ -10,7 +10,8 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 const styles = StyleSheet.create((theme) => ({
   container: {
     flex: 1,
-    padding: SIZES.lg,
+    paddingHorizontal: SIZES.lg,
+    paddingTop: SIZES.lg,
     backgroundColor: theme.colors.screenBackground,
   },
 }));

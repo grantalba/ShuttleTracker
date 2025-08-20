@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text, View } from 'react-native';
+import { TouchableOpacity, Text, View, ViewStyle } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { Octicons, OcticonsIconName } from '@react-native-vector-icons/octicons';
 import { SIZES } from 'constants/theme';
@@ -10,12 +10,18 @@ interface IconButtonProps {
   onPress: () => void;
   color?: string;
   iconSize?: number;
+  containerStyle?: ViewStyle;
 }
 
-const IconButton: React.FC<IconButtonProps> = ({ name = 'plus', text, onPress }) => {
+const IconButton: React.FC<IconButtonProps> = ({
+  name = 'plus',
+  text,
+  onPress,
+  containerStyle,
+}) => {
   const { theme } = useUnistyles();
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity style={[styles.button, containerStyle]} onPress={onPress}>
       <View style={styles.contentContainer}>
         <Octicons name={name} size={SIZES.lg} color={theme.colors.buttonText} />
         <Text style={[styles.text, { color: theme.colors.buttonText }]}>{text}</Text>
